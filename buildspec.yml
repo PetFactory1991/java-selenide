@@ -3,16 +3,16 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo "Установка зависимостей и проверка Maven версии..."
+      - echo "Проверяем версию Maven..."
       - mvn --version
   pre_build:
     commands:
-      - echo "Подготовка проекта (очистка и компиляция)..."
-      - mvn clean compile
+      - echo "Очистка проекта..."
+      - mvn clean
   build:
     commands:
-      - echo "Запуск тестов с использованием Selenide..."
-      - mvn test
+      - echo "Запуск сборки и тестов..."
+      - mvn package
   post_build:
     commands:
       - echo "Сборка завершена на $(date)"
