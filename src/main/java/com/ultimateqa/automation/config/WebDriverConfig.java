@@ -19,10 +19,10 @@ public class WebDriverConfig {
         Configuration.headless = false;
         Configuration.baseUrl = "https://ultimateqa.com/automation";
 
-
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-blink-features=AutomationControlled");
         options.addArguments("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36");
+        options.addArguments("--user-data-dir=/tmp/chrome-user-data-" + System.currentTimeMillis());
 
         // Добавление параметра excludeSwitches для исключения "enable-automation"
         options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
