@@ -39,40 +39,39 @@ public class GoogleSearchPage extends BasePage<GoogleSearchPage> {
         return isLoaded;
     }
 
-    @Step("Ввести поисковый запрос: {query}")
+    @Step("Enter search query: {query}")
     public GoogleSearchPage enterSearchQuery(String query) {
-        log.info("Ввод поискового запроса: {}", query);
+        log.info("Enter search query: {}", query);
         searchBox.shouldBe(visible).setValue(query);
         return this;
     }
 
-    @Step("Выполнить поиск нажатием кнопки")
+    @Step("Click search button")
     public GoogleSearchResultsPage clickSearchButton() {
-        log.info("Нажатие кнопки поиска");
-        // Иногда кнопка поиска может быть не видна сразу, поэтому добавляем прокрутку
+        log.info("Click search button");
         searchBox.pressTab();
         searchButton.click();
         return page(GoogleSearchResultsPage.class);
     }
 
-    @Step("Выполнить поиск нажатием Enter")
+    @Step("Press Enter to search")
     public GoogleSearchResultsPage pressEnterToSearch() {
-        log.info("Нажатие Enter для выполнения поиска");
+        log.info("Press Enter to search");
         searchBox.sendKeys(Keys.ENTER);
         Selenide.sleep(500);
         return page(GoogleSearchResultsPage.class);
     }
 
-    @Step("Выполнить поиск: {query}")
+    @Step("Search: {query}")
     public GoogleSearchResultsPage search(String query) {
-        log.info("Выполнение поиска: {}", query);
+        log.info("Search: {}", query);
         enterSearchQuery(query);
         return pressEnterToSearch();
     }
 
-    @Step("Открыть страницу аккаунта Google")
+    @Step("Open Google account")
     public void openGoogleAccount() {
-        log.info("Открытие страницы аккаунта Google");
+        log.info("Open Google account");
         accountButton.click();
     }
 }

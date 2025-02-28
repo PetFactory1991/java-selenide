@@ -15,20 +15,20 @@ public class BaseTest {
 
     @BeforeSuite
     public void setUpSuite() {
-        log.info("Настройка тестового набора");
+        log.info("Set up suite");
     }
 
     @BeforeMethod
-    @Step("Настройка теста")
+    @Step("Set up test")
     public void setUp() {
-        log.info("Настройка теста");
+        log.info("Set up test");
         WebDriverConfig.configure();
     }
 
     @AfterMethod
-    @Step("Завершение теста")
+    @Step("Tear down test")
     public void tearDown() {
-        log.info("Завершение теста");
+        log.info("Tear down test");
         Selenide.closeWebDriver();
     }
 }

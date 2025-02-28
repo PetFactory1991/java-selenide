@@ -11,7 +11,7 @@ phases:
   build:
     commands:
       - echo "Запуск тестов Google..."
-      - mvn clean test -Daws.execution=true -Dheadless=true
+      - mvn clean test -Daws.execution=true -Dheadless=true -Dlog4j.skipJansi=false
   post_build:
     commands:
       - echo "Генерация отчёта Allure..."

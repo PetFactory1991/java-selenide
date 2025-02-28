@@ -15,53 +15,53 @@ public class GoogleSearchResultsPage extends BasePage<GoogleSearchResultsPage> {
     private final ElementsCollection searchResults = $$("div.g");
     private final SelenideElement googleLogo = $("img.lnXdpd");
 
-    @Step("Проверить, что страница результатов поиска загружена")
+    @Step("Check if the page is loaded")
     @Override
     public boolean isPageLoaded() {
         boolean isLoaded = resultBlock.isDisplayed() && searchBox.isDisplayed();
-        log.info("Проверка загрузки страницы результатов поиска: {}", isLoaded);
+        log.info("Check if the page is loaded: {}", isLoaded);
         return isLoaded;
     }
 
-    @Step("Получить количество результатов поиска")
+    @Step("Get the number of search results")
     public int getResultsCount() {
         int count = searchResults.size();
-        log.info("Количество результатов поиска: {}", count);
+        log.info("Number of search results: {}", count);
         return count;
     }
 
-    @Step("Получить текст поискового запроса")
+    @Step("Get the current search query")
     public String getSearchQuery() {
         String query = searchBox.getValue();
-        log.info("Текущий поисковый запрос: {}", query);
+        log.info("Current search query: {}", query);
         return query;
     }
 
-    @Step("Проверить, содержат ли результаты поиска текст: {text}")
+    @Step("Check if results contain text: {text}")
     public boolean resultsContainText(String text) {
-        log.info("Проверка наличия текста '{}' в результатах поиска", text);
+        log.info("Checking if results contain text: {}", text);
         return searchResults.filter(visible)
                 .stream()
                 .anyMatch(element -> element.getText().contains(text));
     }
 
-    @Step("Получить заголовок первого результата")
+    @Step("Get the title of the first result")
     public String getFirstResultTitle() {
         SelenideElement firstResult = searchResults.first();
         String title = firstResult.$("h3").getText();
-        log.info("Заголовок первого результата: {}", title);
+        log.info("Title of the first result: {}", title);
         return title;
     }
 
-    @Step("Кликнуть по первому результату поиска")
+    @Step("Click on the first result")
     public void clickFirstResult() {
-        log.info("Клик по первому результату поиска");
+        log.info("Clicking on the first result");
         searchResults.first().$("h3").click();
     }
 
-    @Step("Выполнить новый поиск: {query}")
+    @Step("Search again with query: {query}")
     public GoogleSearchResultsPage searchAgain(String query) {
-        log.info("Выполнение нового поиска: {}", query);
+        log.info("Searching again with query: {}", query);
         searchBox.shouldBe(visible).clear();
         searchBox.setValue(query);
         searchBox.pressEnter();

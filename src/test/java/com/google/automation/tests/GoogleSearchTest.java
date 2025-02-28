@@ -14,38 +14,38 @@ public class GoogleSearchTest extends BaseTest {
 
     @Test
     @Feature("Google Search")
-    @Description("Проверка загрузки главной страницы Google")
+    @Description("Check loading of the Google homepage")
     @Severity(SeverityLevel.BLOCKER)
     public void testGoogleSearchPageLoads() {
-        log.info("Запуск теста: проверка загрузки главной страницы Google");
+        log.info("Starting test: check loading of the Google homepage");
         GoogleSearchPage searchPage = new GoogleSearchPage().openSearchPage().closePopup();
-        Assert.assertTrue(searchPage.isPageLoaded(), "Главная страница Google не загружена");
+        Assert.assertTrue(searchPage.isPageLoaded(), "Google homepage is not loaded");
     }
 
     @Test
     @Feature("Google Search")
-    @Description("Проверка выполнения поиска и отображения результатов")
+    @Description("Check search execution and display of results")
     @Severity(SeverityLevel.CRITICAL)
     public void testGoogleSearch() {
-        log.info("Запуск теста: проверка выполнения поиска");
+        log.info("Starting test: check search execution");
         String searchQuery = "Selenide Java";
         GoogleSearchPage searchPage = new GoogleSearchPage().openSearchPage().closePopup();
         GoogleSearchResultsPage resultsPage = searchPage.search(searchQuery);
-        Assert.assertTrue(resultsPage.isPageLoaded(), "Страница результатов поиска не загружена");
-        Assert.assertTrue(resultsPage.getResultsCount() > 0, "Результаты поиска не найдены");
-        Assert.assertEquals(resultsPage.getSearchQuery(), searchQuery, "Поисковый запрос не соответствует ожидаемому");
+        Assert.assertTrue(resultsPage.isPageLoaded(), "Search results page is not loaded");
+        Assert.assertTrue(resultsPage.getResultsCount() > 0, "No search results found");
+        Assert.assertEquals(resultsPage.getSearchQuery(), searchQuery, "Search query does not match the expected");
     }
 
     @Test
     @Feature("Google Search")
-    @Description("Проверка содержимого результатов поиска")
+    @Description("Check the content of search results")
     @Severity(SeverityLevel.NORMAL)
     public void testSearchResultsContent() {
-        log.info("Запуск теста: проверка содержимого результатов поиска");
+        log.info("Starting test: check the content of search results");
         String searchQuery = "Selenium WebDriver";
         String expectedTextInResults = "Selenium";
         GoogleSearchPage searchPage = new GoogleSearchPage().openSearchPage().closePopup();
         GoogleSearchResultsPage resultsPage = searchPage.search(searchQuery);
-        Assert.assertTrue(resultsPage.resultsContainText(expectedTextInResults), "Результаты поиска не содержат ожидаемый текст");
+        Assert.assertTrue(resultsPage.resultsContainText(expectedTextInResults), "Search results do not contain the expected text");
     }
 }

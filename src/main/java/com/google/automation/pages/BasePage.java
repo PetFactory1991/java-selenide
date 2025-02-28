@@ -9,28 +9,27 @@ public abstract class BasePage<T extends BasePage<T>> {
 
     protected final Logger log = LoggerFactory.getLogger(getClass());
 
-    @Step("Открыть URL: {url}")
+    @Step("Open URL: {url}")
     public T openUrl(String url) {
-        log.info("Открытие URL: {}", url);
+        log.info("Opening URL: {}", url);
         Selenide.open(url);
         Selenide.sleep(500);
         return (T) this;
     }
 
-    @Step("Получить заголовок страницы")
+    @Step("Get page title")
     public String getTitle() {
         String title = Selenide.title();
-        log.info("Получен заголовок страницы: {}", title);
+        log.info("Page title: {}", title);
         return title;
     }
 
-    @Step("Сделать скриншот страницы")
+    @Step("Take screenshot: {screenshotName}")
     public T takeScreenshot(String screenshotName) {
-        log.info("Создание скриншота: {}", screenshotName);
+        log.info("Taking screenshot: {}", screenshotName);
         Selenide.screenshot(screenshotName);
         return (T) this;
     }
 
-    // Абстрактный метод, который должен быть реализован в каждой странице
     public abstract boolean isPageLoaded();
 }
