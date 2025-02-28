@@ -1,6 +1,5 @@
 package com.ultimateqa.automation.pages;
 
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
@@ -20,29 +19,28 @@ public class AutomationPage extends BasePage {
 
     @Step()
     public AutomationPage openAutomationPage() {
-        logger.info("Open Automation page");
+        log.info("Open Automation page");
         open("/");
         return page(AutomationPage.class);
     }
 
     @Step("Open 'Big page with many elements' page")
     public BigPageWithManyElements openBigPageWithManyElements() {
-        logger.info("Open 'Big page with many elements' page");
+        log.info("Open 'Big page with many elements' page");
         return page(BigPageWithManyElements.class);
     }
 
     @Step("Проверить, что страница автоматизации загружена")
-    @Override
     public boolean isPageLoaded() {
         boolean isLoaded = pageTitle.isDisplayed() && pageTitle.getText().contains("Automation Practice");
-        logger.info("Проверка загрузки страницы автоматизации: {}", isLoaded);
+        log.info("Проверка загрузки страницы автоматизации: {}", isLoaded);
         return isLoaded;
     }
 
     @Step("Получить текст заголовка страницы")
     public String getPageTitleText() {
         String title = pageTitle.getText();
-        logger.info("Заголовок страницы автоматизации: {}", title);
+        log.info("Заголовок страницы автоматизации: {}", title);
         return title;
     }
 }
