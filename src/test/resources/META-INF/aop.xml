@@ -1,0 +1,9 @@
+<aspectj>
+    <weaver options="-Xset:weaveJavaxPackages=true">
+        <include within="com.ultimateqa.automation.*"/>
+    </weaver>
+    <aspects>
+        <aspect name="io.qameta.allure.aspects.AttachAspects"/>
+        <aspect name="io.qameta.allure.aspects.StepsAspects"/>
+    </aspects>
+</aspectj>
