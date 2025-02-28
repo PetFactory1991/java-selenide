@@ -2,21 +2,32 @@ version: 0.2
 
 phases:
   install:
-    commands:
-      - echo "Проверяем версию Maven..."
-      - mvn --version
+    runtime-versions:
+      java: corretto17
   pre_build:
     commands:
-      - echo "Очистка проекта..."
-      - mvn clean
+      - echo "Начинается сборка проекта..."
+      - echo "Установка зависимостей..."
   build:
     commands:
-      - echo "Запуск сборки и тестов..."
-      - mvn package
+      - echo "Запуск тестов..."
+      - mvn clean test -Daws.execution=true
   post_build:
     commands:
-      - echo "Сборка завершена на $(date)"
+      - echo "Генерация отчёта Allure..."
+      - mvn allure:report
+      - echo "Копирование отчетов в S3..."
+      - aws s3 cp target/site/allure-maven-plugin s3://utyfdfrthby08bucket/allure-reports/$(date +%Y-%m-%d_%H-%M-%S) --recursive
+      - echo "Сборка завершена успешно!"
+
 artifacts:
   files:
-    - target/*.jar
-    - target/surefire-reports/**/*.*
+    - target/site/allure-maven-plugin/**/*
+    - target/surefire-reports/**/*
+  discard-paths: no
+
+reports:
+  TestReports:
+    files:
+      - 'target/surefire-reports/*.xml'
+    file-format: 'JUNITXML'
