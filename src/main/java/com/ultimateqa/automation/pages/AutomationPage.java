@@ -17,16 +17,10 @@ public class AutomationPage extends BasePage {
     private final SelenideElement interactionsWithSimpleElements = $("a[href*='simple-html-elements-for-automation']");
 
 
-    @Step()
-    public AutomationPage openAutomationPage() {
-        log.info("Open Automation page");
-        open("/");
-        return page(AutomationPage.class);
-    }
-
     @Step("Open 'Big page with many elements' page")
     public BigPageWithManyElements openBigPageWithManyElements() {
         log.info("Open 'Big page with many elements' page");
+        bigPageWithManyElements.click();
         return page(BigPageWithManyElements.class);
     }
 
@@ -42,5 +36,54 @@ public class AutomationPage extends BasePage {
         String title = pageTitle.getText();
         log.info("Заголовок страницы автоматизации: {}", title);
         return title;
+    }
+
+    @Step()
+    public AutomationPage openAutomationPage() {
+        log.info("Open Automation page");
+        open("/");
+        return page(AutomationPage.class);
+    }
+
+    @Step("Open 'Fake landing page' page")
+    public FakeLandingPage openFakeLandingPage() {
+        log.info("Open 'Fake landing page' page");
+        fakeLandingPage.click();
+        return page(FakeLandingPage.class);
+    }
+
+    @Step("Open 'Fake pricing page' page")
+    public FakePricingPage openFakePricingPage() {
+        log.info("Open 'Fake pricing page' page");
+        fakePricingPage.click();
+        return page(FakePricingPage.class);
+    }
+
+    @Step("Open 'Fill out forms' page")
+    public FillOutFormsPage openFillOutFormsPage() {
+        log.info("Open 'Fill out forms' page");
+        fillOutForms.click();
+        return page(FillOutFormsPage.class);
+    }
+
+    @Step("Open 'Learn how to automate an application that evolves over time' page")
+    public LearnHowToAutomateAnApplicationThatEvolvesOverTime openLearnHowToAutomateAnApplicationThatEvolvesOverTime() {
+        log.info("Open 'Learn how to automate an application that evolves over time' page");
+        learnHowToAutomateAnApplicationThatEvolvesOverTime.click();
+        return page(LearnHowToAutomateAnApplicationThatEvolvesOverTime.class);
+    }
+
+    @Step("Open 'Login automation' page")
+    public LoginAutomationPage openLoginAutomationPage() {
+        log.info("Open 'Login automation' page");
+        loginAutomation.click();
+        return page(LoginAutomationPage.class);
+    }
+
+    @Step("Open 'Interactions with simple elements' page")
+    public InteractionsWithSimpleElements openInteractionsWithSimpleElements() {
+        log.info("Open 'Interactions with simple elements' page");
+        interactionsWithSimpleElements.click();
+        return page(InteractionsWithSimpleElements.class);
     }
 }

@@ -12,19 +12,34 @@ import org.testng.annotations.Test;
 public class AutomationPageTest extends BaseTest {
 
     @Test
-    @Feature("Страница автоматизации")
-    @Description("Проверка загрузки страницы автоматизации")
+    @Feature("Automation page")
+    @Description("Check if automation page loads")
     @Severity(SeverityLevel.BLOCKER)
     public void testAutomationPageLoads() {
-        log.info("Запуск теста: проверка загрузки страницы автоматизации");
+        log.info("Running test: check if automation page loads");
 
         AutomationPage automationPage = new AutomationPage().openAutomationPage();
 
         Assert.assertTrue(automationPage.isPageLoaded(),
-                "Страница автоматизации не загрузилась");
+                "Automation page is not loaded");
 
         String titleText = automationPage.getPageTitleText();
         Assert.assertTrue(titleText.contains("Automation Practice"),
-                "Заголовок страницы не содержит ожидаемый текст");
+                "Automation page title is incorrect");
+    }
+
+    @Test
+    @Feature("Complicated page")
+    @Description("Open 'Big page with many elements' page")
+    @Severity(SeverityLevel.BLOCKER)
+    public void testOpenBigPageWithManyElements() {
+        log.info("Running test: open 'Big page with many elements' page");
+
+        var page = new AutomationPage().openAutomationPage()
+                .openBigPageWithManyElements()
+                .getSectionOfButtonsText();
+
+        Assert.assertEquals(page.getText(), "Section of Buttons",
+                "Text is incorrect");
     }
 }
