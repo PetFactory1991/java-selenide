@@ -25,9 +25,3 @@ artifacts:
     - target/site/allure-maven-plugin/**/*
     - target/surefire-reports/**/*
   discard-paths: no
-
-reports:
-  TestReports:
-    files:
-      - 'target/surefire-reports/*.xml'
-    file-format: 'JUNITXML'
