@@ -16,13 +16,13 @@ public class BaseTest {
     @BeforeSuite
     public void setUpSuite() {
         log.info("Настройка тестового набора");
-        WebDriverConfig.configure();
     }
 
     @BeforeMethod
     @Step("Настройка теста")
     public void setUp() {
         log.info("Настройка теста");
+        WebDriverConfig.configure();
 
     }
 
