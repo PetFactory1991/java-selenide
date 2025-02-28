@@ -68,3 +68,5 @@ buildNumber.properties
 .classpath
 
 /target/
+/allure-results/
+/build/
