@@ -17,7 +17,7 @@ phases:
       - echo "Генерация отчёта Allure..."
       - mvn allure:report
       - echo "Копирование отчетов в S3..."
-      - aws s3 cp target/site/allure-maven-plugin s3://utyfdfrthby08bucket/allure-reports/$(date +%Y-%m-%d_%H-%M-%S) --recursive
+      - aws s3 cp target/site/allure-maven-plugin s3://utyfdfrthby08bucket/java-selenide/allure-reports/$(date +%Y-%m-%d_%H-%M-%S) --recursive
       - echo "Сборка завершена успешно!"
 
 artifacts:
