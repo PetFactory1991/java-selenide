@@ -16,7 +16,6 @@ public class WebDriverConfig {
         Configuration.baseUrl = "https://ultimateqa.com/automation";
 
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--user-data-dir=/tmp/chrome-user-data-" + System.currentTimeMillis());
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
 
