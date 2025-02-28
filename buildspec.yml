@@ -10,8 +10,8 @@ phases:
       - echo "Установка зависимостей..."
   build:
     commands:
-      - echo "Запуск тестов..."
-      - mvn clean test -Daws.execution=true
+      - echo "Запуск тестов Google..."
+      - mvn clean test -Daws.execution=true -Dheadless=true
   post_build:
     commands:
       - echo "Генерация отчёта Allure..."

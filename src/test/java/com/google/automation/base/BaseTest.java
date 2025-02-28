@@ -1,7 +1,7 @@
-package com.ultimateqa.automation.base;
+package com.google.automation.base;
 
 import com.codeborne.selenide.Selenide;
-import com.ultimateqa.automation.config.WebDriverConfig;
+import com.google.automation.config.WebDriverConfig;
 import io.qameta.allure.Step;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +23,6 @@ public class BaseTest {
     public void setUp() {
         log.info("Настройка теста");
         WebDriverConfig.configure();
-
     }
 
     @AfterMethod
