@@ -12,12 +12,19 @@ public class WebDriverConfig {
         Configuration.browserSize = "1920x1080";
         Configuration.pageLoadTimeout = 30000;
         Configuration.timeout = 10000;
-        Configuration.headless = false;
+        // В CI окружении рекомендуется использовать headless режим
+        Configuration.headless = true;
         Configuration.baseUrl = "https://ultimateqa.com/automation";
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
+        // Добавляем уникальную директорию для каждого запуска браузера
+        options.addArguments("--user-data-dir=/tmp/chrome-user-data-" + System.currentTimeMillis());
+
+        // Дополнительные опции для стабильной работы в AWS CodeBuild
+        options.addArguments("--disable-gpu");
+        options.addArguments("--window-size=1920,1080");
 
         // Применяем дополнительные возможности браузера
         Configuration.browserCapabilities = options;
