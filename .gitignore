@@ -70,3 +70,5 @@ buildNumber.properties
 /target/
 /allure-results/
 /build/
+/logs/
+/.allure/

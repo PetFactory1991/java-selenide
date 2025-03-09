@@ -20,8 +20,9 @@ public class WebDriverConfig {
         Configuration.headless = Boolean.parseBoolean(
                 System.getProperty("headless", "false")
         );
-        Configuration.baseUrl = "https://www.google.com";
+        Configuration.baseUrl = "https://www.google.com/?hl=en";
         ChromeOptions options = new ChromeOptions();
+        options.addArguments("--lang=en");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--user-data-dir=/tmp/chrome-user-data-" + System.currentTimeMillis());

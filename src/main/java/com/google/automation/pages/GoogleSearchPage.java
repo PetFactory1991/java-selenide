@@ -23,11 +23,18 @@ public class GoogleSearchPage extends BasePage<GoogleSearchPage> {
         return openUrl("/");
     }
 
-    @Step("Close popup")
+    @Step("Close popup what appears on the first visit")
     public GoogleSearchPage closePopup() {
-        log.info("Close popup");
+        log.info("Close popup what appears on the first visit");
         popup.shouldBe(visible).click();
         Selenide.sleep(500);
+        return this;
+    }
+
+    @Step("Change to English language")
+    public GoogleSearchPage changeLanguageToEnglish() {
+        log.info("Change to English language");
+        $("div#SIvCob a").shouldBe(visible).click();
         return this;
     }
 
