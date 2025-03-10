@@ -1,0 +1,19 @@
+{
+  "name": "java-selenide",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve-report": "http-server target/allure-report -p 9090 -o"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PetFactory1991/java-selenide.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PetFactory1991/java-selenide/issues"
+  },
+  "homepage": "https://github.com/PetFactory1991/java-selenide#readme"
+}

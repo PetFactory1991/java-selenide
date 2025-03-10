@@ -13,7 +13,7 @@
         <maven.compiler.target>17</maven.compiler.target>
         <selenide.version>7.7.1</selenide.version>
         <testng.version>7.11.0</testng.version>
-        <allure.version>2.24.0</allure.version>
+        <allure.version>2.20.1</allure.version>
         <aspectj.version>1.9.19</aspectj.version>
         <slf4j.version>2.20.0</slf4j.version>
         <aws.sdk.version>2.21.40</aws.sdk.version>
@@ -112,11 +112,23 @@
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
-                <version>2.12.0</version>
+                <version>2.11.2</version>
                 <configuration>
                     <reportVersion>${allure.version}</reportVersion>
                     <resultsDirectory>${allure.results.directory}</resultsDirectory>
                     <reportDirectory>${allure.report.directory}</reportDirectory>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <executable>npm</executable>
+                    <arguments>
+                        <argument>run</argument>
+                        <argument>serve-report</argument>
+                    </arguments>
                 </configuration>
             </plugin>
         </plugins>
