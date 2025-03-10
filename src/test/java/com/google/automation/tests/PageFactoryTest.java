@@ -22,16 +22,10 @@ public class PageFactoryTest extends BaseTest {
     @Severity(SeverityLevel.NORMAL)
     public void testPageFactorySearch() {
         log.info("Запуск теста с использованием Page Factory для стандартного поиска");
-
         String query = "Automation Framework";
-
         GoogleSearchResultsPage resultsPage = PageFactory.searchOnGoogle(query);
-
-        Assert.assertTrue(resultsPage.isPageLoaded(),
-                "Страница результатов не загрузилась");
-
-        Assert.assertTrue(resultsPage.getResultsCount() > 0,
-                "Результаты поиска не найдены");
+        Assert.assertTrue(resultsPage.isPageLoaded(), "Страница результатов не загрузилась");
+        Assert.assertTrue(resultsPage.getResultsCount() > 0, "Результаты поиска не найдены");
     }
 
     @Test

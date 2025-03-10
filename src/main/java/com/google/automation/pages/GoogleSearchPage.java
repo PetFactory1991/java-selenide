@@ -6,8 +6,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
 
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 
 public class GoogleSearchPage extends BasePage<GoogleSearchPage> {
 
@@ -15,7 +14,7 @@ public class GoogleSearchPage extends BasePage<GoogleSearchPage> {
     private final SelenideElement searchBox = $("textarea[name='q']");
     private final SelenideElement searchButton = $("input[name='btnK']");
     private final SelenideElement googleLogo = $("img.lnXdpd");
-    private final SelenideElement accountButton = $("a[aria-label*='Google Account']");
+    private final SelenideElement accountButton = $x("//*[text()='Sign in']");
 
     @Step("Open 'Google search' page")
     public GoogleSearchPage openSearchPage() {
@@ -57,7 +56,7 @@ public class GoogleSearchPage extends BasePage<GoogleSearchPage> {
     public GoogleSearchResultsPage clickSearchButton() {
         log.info("Click search button");
         searchBox.pressTab();
-        searchButton.click();
+        searchButton.shouldBe(visible).click();
         return page(GoogleSearchResultsPage.class);
     }
 
@@ -79,6 +78,6 @@ public class GoogleSearchPage extends BasePage<GoogleSearchPage> {
     @Step("Open Google account")
     public void openGoogleAccount() {
         log.info("Open Google account");
-        accountButton.click();
+        accountButton.shouldBe(visible).click();
     }
 }
