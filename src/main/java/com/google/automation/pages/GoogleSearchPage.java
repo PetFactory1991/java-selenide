@@ -33,7 +33,7 @@ public class GoogleSearchPage extends BasePage<GoogleSearchPage> {
     @Step("Change to English language")
     public GoogleSearchPage changeLanguageToEnglish() {
         log.info("Change to English language");
-        $("div#SIvCob a").shouldBe(visible).click();
+        $x("//a[text()='English']").shouldBe(visible).click();
         return this;
     }
 
