@@ -16,8 +16,8 @@ phases:
     commands:
       - echo "Генерация отчёта Allure..."
       - mvn allure:report
-      - echo "Копирование отчетов в S3..."
-      - aws s3 cp target/allure-report s3://utyfdfrthby08bucket/java-selenide/allure-reports/$(date +%Y-%m-%d_%H-%M-%S) --recursive
+      - echo "Загрузка отчетов в S3 через Java-код..."
+      - mvn exec:java -Dexec.mainClass="com.google.automation.aws.AllureReportUploader"
       - echo "Сборка завершена успешно!"
 
 artifacts:

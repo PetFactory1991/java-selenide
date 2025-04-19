@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Стабильность",
+    "matchedStatuses": [
+      "broken"
+    ],
+    "messageRegex": ".*Element not found.*|.*Timed out.*|.*StaleElementReference.*"
+  },
+  {
+    "name": "Проблемы с Google API",
+    "matchedStatuses": [
+      "failed"
+    ],
+    "messageRegex": ".*403 Forbidden.*|.*429 Too Many Requests.*"
+  },
+  {
+    "name": "Ошибки в логике тестов",
+    "matchedStatuses": [
+      "failed"
+    ],
+    "messageRegex": ".*AssertionError.*|.*Expected.*but was.*"
+  },
+  {
+    "name": "Проблемы окружения",
+    "matchedStatuses": [
+      "broken"
+    ],
+    "messageRegex": ".*timeout.*|.*connection refused.*|.*no such session.*"
+  }
+]

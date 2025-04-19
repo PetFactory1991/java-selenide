@@ -22,6 +22,9 @@ public class GoogleSearchResultsPage extends BasePage<GoogleSearchResultsPage> {
     private final SelenideElement prevPageButton = $("a#pnprev");
     private final ElementsCollection paginationLinks = $$("table.AaVjTc td:not(.YyVfkd) a");
 
+    // not correct locator
+    private final SelenideElement notCorrectLocator = $x("div.non-existent-class");
+
     @Step("Check if the page is loaded")
     @Override
     public boolean isPageLoaded() {
@@ -142,5 +145,12 @@ public class GoogleSearchResultsPage extends BasePage<GoogleSearchResultsPage> {
 
         log.warn("Ссылка на страницу {} не найдена", pageNumber);
         throw new IllegalStateException("Ссылка на страницу " + pageNumber + " не найдена");
+    }
+
+    @Step("Выполнить метод с невалидным локатором")
+    public GoogleSearchResultsPage doActionWithInvalidLocator() {
+        log.info("Выполнение действия с невалидным локатором");
+        notCorrectLocator.shouldBe(visible).click();
+        return this;
     }
 }

@@ -124,19 +124,24 @@
                     <reportVersion>${allure.version}</reportVersion>
                     <resultsDirectory>${allure.results.directory}</resultsDirectory>
                     <reportDirectory>${allure.report.directory}</reportDirectory>
+                    <categoriesDirectory>${project.basedir}/src/test/resources</categoriesDirectory>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.1.0</version>
-                <configuration>
-                    <executable>npm</executable>
-                    <arguments>
-                        <argument>run</argument>
-                        <argument>serve-report</argument>
-                    </arguments>
-                </configuration>
+                <executions>
+                    <execution>
+                        <id>report-manager</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>com.google.automation.aws.AllureReportManager</mainClass>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
